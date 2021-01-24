@@ -1,5 +1,6 @@
 FROM ghost:latest
 
+ENV GHOST_SOURCE=/var/lib/dokku/data/storage/ghost
 
 RUN rm "$GHOST_SOURCE/config.js"
 ADD config.js "$GHOST_SOURCE/config.js"
