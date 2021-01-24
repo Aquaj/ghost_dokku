@@ -2,7 +2,7 @@
 set -e
 
 if [[ "$*" == npm*start* ]]; then
-	baseDir="$GHOST_SOURCE/content"
+	baseDir="content"
 	for dir in "$baseDir"/*/ "$baseDir"/themes/*/; do
 		targetDir="$GHOST_CONTENT/${dir#$baseDir/}"
 		mkdir -p "$targetDir"
@@ -11,9 +11,10 @@ if [[ "$*" == npm*start* ]]; then
 		fi
 	done
 
-  chown -R user "$GHOST_CONTENT"
+  chown -R node "$GHOST_CONTENT"
 
 	set -- gosu user "$@"
 fi
 
+echo "$@" > test.log
 exec "$@"
